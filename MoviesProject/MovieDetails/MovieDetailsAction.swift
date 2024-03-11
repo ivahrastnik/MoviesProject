@@ -1,10 +1,12 @@
 import ComposableArchitecture
 
 public extension MovieDetails {
-    enum Action: BindableAction {
+    @CasePathable
+    enum Action {
         case viewAppeared
-        case binding(BindingAction<State>)
-        case detailCategoryTapped(String)
+        case detailCategories(DetailCategories.Action)
+//        case detailCategoryTapped(String)
+//        case detailCategories(DetailCategories.Action)
 
     }
 }

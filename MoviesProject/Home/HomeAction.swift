@@ -1,7 +1,8 @@
 import ComposableArchitecture
 
 public extension Home {
-    enum Action {
+    @CasePathable
+    enum Action  {
         case viewAppeared
         case topList(TopList.Action)
         case categoriesList(CategoriesList.Action)

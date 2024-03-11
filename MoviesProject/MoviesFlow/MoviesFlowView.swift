@@ -7,7 +7,7 @@ public extension MoviesFlow {
 
         public var body: some View {
             NavigationStack(path: $store.scope(state: \.path, action: \.path)) {
-                Home.HomeView(store: store.scope(state: \.home, action: Action.home))
+                Home.HomeView(store: store.scope(state: \.home, action: \.home)).background(.darkBackground)
             } destination: { store in
                 switch store.case {
                 case let .movieDetails(store):
@@ -17,7 +17,7 @@ public extension MoviesFlow {
 
                 }
             }
-            .background(.darkBackground)
+            .background(.darkBackground).edgesIgnoringSafeArea(.all)
         }
     }
 }
