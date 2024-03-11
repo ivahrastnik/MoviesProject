@@ -78,10 +78,21 @@ public extension MovieDetails {
                     }
                 }
             }
-            .navigationTitle(Text("Detail"))
-            .foregroundColor(.white)
-            .font(.custom("Poppins", size: 20))
+//            .navigationTitle(Text("Detail")
+//                .foregroundColor(.white)
+//                .font(.custom("Poppins", size: 20)))
+            
             .background(.darkBackground)
+//            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading: HStack {
+                Text("                    ")
+                Spacer() // Add a Spacer to push "Detail" to the center
+                Text("Detail")
+                    .foregroundColor(.white)
+                    .font(.custom("Poppins", size: 20))
+            }
+            )
+            .foregroundColor(.white)
         }
             
     }

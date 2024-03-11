@@ -8,7 +8,7 @@ public extension Home {
         var topList: TopList.State = .init()
         var categoriesList: CategoriesList.State = .init()
         var moviesLoadingValue: LoadingValue<[Movie]> = .idle
-//        var path = StackState<MovieDetails.State>()
+        var searchText = ""
     }
 }
 

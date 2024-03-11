@@ -32,8 +32,10 @@ public struct MoviesFlow: Reducer {
                 state.path.append(.movieDetails(.init(movie: movie)))
             case .home(.categoriesList(.listItemTapped(let movie))):
                 state.path.append(.movieDetails(.init(movie: movie)))
-            case .home(.searchBarTapped(let movie)):
-                state.path.append(.movieSearch(.init(movie: movie)))
+            case .home(.searchBarTapped(let movies)):
+                state.path.append(.movieSearch(.init(movies: movies)))
+            case .home(.movieSearch(.listItemTapped(let movie))):
+                state.path.append(.movieDetails(.init(movie: movie)))
                 
             case .home:
                 break

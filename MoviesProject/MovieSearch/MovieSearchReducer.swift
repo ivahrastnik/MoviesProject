@@ -10,6 +10,11 @@ public struct MovieSearch: Reducer {
             switch action {
             case .viewAppeared, .binding:
                 break
+            case .searchTextDidChange(let txt):
+                state.searchText = txt
+                return .none
+            case .listItemTapped(let item):
+                break
             }
             return .none
         }

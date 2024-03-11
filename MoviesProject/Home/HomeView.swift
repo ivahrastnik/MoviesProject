@@ -28,22 +28,22 @@ public extension Home {
                             NavigationView {
                                 ScrollView {
                                     VStack() {
-                                        //                    TextField("Search", text: $searchText)
                                         Button(action: {
-                                            viewStore.send(.searchBarTapped(movies[0]))
+                                            viewStore.send(.searchBarTapped(movies))
                                             print("Button tapped")
-                                        }) {                                            HStack(){
-                                            Text("Search")
-                                            //                                            MovieDetails.MovieDetailsView(store: store.scope(state: \.movieDetails, action: Action.movieDetails))
-                                                .padding(EdgeInsets(top: 12, leading: 24, bottom: 12, trailing: 0))
-                                                .foregroundColor(.lightGray)
-                                                .font(.custom("Poppins", fixedSize: 14))
-                                            
-                                            Image(.searchIcon)
-                                                .frame(maxWidth: .infinity, alignment: .trailing)
-                                                .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 16))
-                                                .foregroundColor(.lightGray)
-                                        }
+                                        }) {
+                                            HStack(){
+                                                Text("Search")
+                                                //                                            MovieDetails.MovieDetailsView(store: store.scope(state: \.movieDetails, action: Action.movieDetails))
+                                                    .padding(EdgeInsets(top: 12, leading: 24, bottom: 12, trailing: 0))
+                                                    .foregroundColor(.lightGray)
+                                                    .font(.custom("Poppins", fixedSize: 14))
+                                                
+                                                Image(.searchIcon)
+                                                    .frame(maxWidth: .infinity, alignment: .trailing)
+                                                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 16))
+                                                    .foregroundColor(.lightGray)
+                                            }
                                             //                    .frame(height: 42)
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                         .background(.darkGray)

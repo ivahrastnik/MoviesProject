@@ -17,13 +17,11 @@ public extension CategoriesList {
                     HStack(spacing: 20){
                         ForEach(viewStore.categories, id: \.self) { category in
                             Button(action: {
-//                                print("Button tapped: \(category)")
                                 viewStore.send(.categoryTapped(category))
                             }) {
                                 Text(category)
                                     .font(.custom("Poppins", size: 14))
                                     .frame(height: 33)
-//                                    .padding(.bottom, 4)
                                     .foregroundColor(.white)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 2)
@@ -44,7 +42,6 @@ public extension CategoriesList {
                 
                 LazyVGrid(columns: columns) {
                     ForEach((viewStore.selectedCategory == "Top rated" ? viewStore.sortedMovies : viewStore.movies), id: \.imdbID) { movie in
-                        
                         Button(action: {
                             viewStore.send(.listItemTapped(movie))
                         }) {

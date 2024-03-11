@@ -14,7 +14,7 @@ struct CategoryMovieCell: View {
         AsyncImage(url: URL(string: movie.images[0])) { phase in
             switch phase {
             case .empty:
-                ProgressView() // Placeholder while loading
+                ProgressView() 
             case .success(let image):
                 image
                     .resizable()
@@ -24,7 +24,7 @@ struct CategoryMovieCell: View {
                     .cornerRadius(16)
 //                    .padding(EdgeInsets(top: 20, leading: 10, bottom: 0, trailing: 10))
             case .failure:
-                Text("Failed to load image") // Placeholder for failure
+                Text("Failed to load image")
             @unknown default:
                 EmptyView()
             }

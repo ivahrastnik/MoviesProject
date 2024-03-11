@@ -9,7 +9,7 @@ public extension Home {
         case moviesFetched([Movie]?)
         case movieDetails(MovieDetails.Action)
         case movieSearch(MovieSearch.Action)
-        case searchBarTapped(Movie)
-//        case path(StackAction<MovieDetails.State, MovieDetails.Action>)
+        case searchBarTapped([Movie])
+        case searchTextDidChange(String)
     }
 }

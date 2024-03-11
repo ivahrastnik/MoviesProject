@@ -48,6 +48,9 @@ public struct Home: Reducer {
                 break
             case .movieSearch:
                 break
+            case .searchTextDidChange(let txt):
+                state.searchText = txt
+                return .none
             }
             return .none
         }
