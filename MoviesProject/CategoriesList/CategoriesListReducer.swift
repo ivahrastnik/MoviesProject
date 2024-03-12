@@ -12,7 +12,7 @@ public struct CategoriesList: Reducer {
                 break
             case let .categoryTapped(category):
                 state.selectedCategory = category
-            case .listItemTapped(let item):
+            case .listItemTapped(_):
                 break
             }
             return .none

@@ -13,7 +13,7 @@ public struct Home: Reducer {
         Reduce<State, Action> { state, action in
             switch action {
             case .viewAppeared:
-                if state.dataFetched == false {
+                if state.moviesLoadingValue == .idle {
                     state.moviesLoadingValue = .loading
                     return .run { send in
                         let (data, _) = try await URLSession.shared
@@ -22,31 +22,24 @@ public struct Home: Reducer {
                         await send(.moviesFetched(movies))
                     }
                 }
-            case .topList, .categoriesList:
+            case .topList, .categoriesList, .movieDetails, .movieSearch:
                 break
             case .moviesFetched(let movies):
                 if let movies {
                     state.moviesLoadingValue = .loaded(movies)
-                    state.topList.movies = movies
+                    
                     state.categoriesList.movies = movies
+                    state.movieSearch.movies = movies
                     
                     let sortedMovies = movies.sorted { $0.imdbRating > $1.imdbRating }
                     state.topList.sortedMovies = sortedMovies
                     state.categoriesList.sortedMovies = sortedMovies
-                    state.dataFetched = true
-                    
                     
                 } else {
                     state.moviesLoadingValue = .error("Failed fetching movies")
                 }
-            case .movieDetails:
-                break
-//            case .path(_):
-//                    .none
             case .searchBarTapped(let item):
                 print(item)
-                break
-            case .movieSearch:
                 break
             case .searchTextDidChange(let txt):
                 state.searchText = txt
@@ -54,9 +47,5 @@ public struct Home: Reducer {
             }
             return .none
         }
-        
-//        .forEach(\.path, action: \.path) {
-//              Home()
-//            }
     }
 }

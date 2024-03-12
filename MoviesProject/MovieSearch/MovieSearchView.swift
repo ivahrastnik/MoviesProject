@@ -12,7 +12,6 @@ public extension MovieSearch {
             WithViewStore(store, observe: { $0 }) { viewStore in
                 
                 ZStack {
-                        
                         NavigationView {
                             ScrollView {
                                 VStack() {
@@ -44,12 +43,7 @@ public extension MovieSearch {
                                         HStack(){
                                             Button(action: {
                                                 viewStore.send(.listItemTapped(movie))
-                                                print("HEREEE")
-                                                //                                                print(viewStore.movie.title)
-                                                //                                            viewStore.send(.listItemTapped(movie))
                                             }) {
-                                                //                                            ForEach(viewStore.movies, id: \.imdbID) { movie in
-                                                //                                                let movie = viewStore.movies[0]
                                                 CategoryMovieCell(movie: movie)
                                                     .padding(EdgeInsets(top: 28, leading: 24, bottom: 24, trailing: 0))
                                             }

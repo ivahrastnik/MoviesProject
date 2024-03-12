@@ -12,8 +12,6 @@ struct TopListMovieCell: View {
     let rating: Int
     
     var body: some View {
-        
-        
         AsyncImage(url: URL(string: movie.images[0])) { phase in
             switch phase {
             case .empty:
@@ -30,7 +28,6 @@ struct TopListMovieCell: View {
                         Text("\(rating)")
                             .foregroundColor(.blue)
                             .font(.custom("Montserrat", fixedSize: 100))
-                        //                            .frame(maxWidth: .infinity, alignment: .bottomLeading)
                             .alignmentGuide(.bottom, computeValue: { dimension in
                                 dimension[.bottom] - 30
                             })
@@ -44,26 +41,6 @@ struct TopListMovieCell: View {
                 EmptyView()
             }
         }
-
-        
-        
-//        AsyncImage(url: URL(string: movie.images[0])) { phase in
-//            phase.image
-//                .clipped()
-//                .resizable()
-//                .cornerRadius(16)
-//                .frame(width: 140, height: 210)
-//                .scaledToFill()
-//                .padding(EdgeInsets(top: 20, leading: 15, bottom: 0, trailing: 15))
-//                .overlay(alignment: .bottomLeading){
-//                    Text("\(rating)")
-//                        .foregroundColor(.blue)
-//                        .font(.custom("Montserrat", fixedSize: 96))
-//                        .frame(maxWidth: .infinity, alignment: .bottomLeading)
-//                }
-//            //                Image(.movieImgPlaceholder)
-//            
-//        }
         
     }
     

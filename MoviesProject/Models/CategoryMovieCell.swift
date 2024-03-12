@@ -22,7 +22,6 @@ struct CategoryMovieCell: View {
                     .frame(width: 100, height: 145)
                     .clipped()
                     .cornerRadius(16)
-//                    .padding(EdgeInsets(top: 20, leading: 10, bottom: 0, trailing: 10))
             case .failure:
                 Text("Failed to load image")
             @unknown default:

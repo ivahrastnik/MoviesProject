@@ -14,7 +14,6 @@ public extension MoviesFlow {
                     MovieDetails.MovieDetailsView(store: store)
                 case let .movieSearch(store):
                     MovieSearch.MovieSearchView(store: store)
-
                 }
             }
             .background(.darkBackground).edgesIgnoringSafeArea(.all)

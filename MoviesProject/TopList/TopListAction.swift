@@ -5,7 +5,5 @@ public extension TopList {
         case viewAppeared
         case binding(BindingAction<State>)
         case listItemTapped(Movie)
-//        case topList(TopList.Action)
-//        case path(StackAction<MovieDetails.State, MovieDetails.Action>)
     }
 }
