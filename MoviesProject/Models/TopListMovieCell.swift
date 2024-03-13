@@ -43,8 +43,4 @@ struct TopListMovieCell: View {
         }
         
     }
-    
-    //#Preview {
-    //    TopListMovieCell(movie: <#Movie#>, index: <#Int#>, body: <#some View#>)
-    //}
 }

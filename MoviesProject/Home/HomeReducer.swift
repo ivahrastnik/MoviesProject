@@ -3,8 +3,7 @@ import Foundation
 
 public struct Home: Reducer {
 
-    public init() {
-    }
+    public init() {}
 
     public var body: some Reducer<State, Action> {
         Scope(state: \.categoriesList, action: /Action.categoriesList) {
@@ -38,12 +37,10 @@ public struct Home: Reducer {
                 } else {
                     state.moviesLoadingValue = .error("Failed fetching movies")
                 }
-            case .searchBarTapped(let item):
-                print(item)
+            case .searchBarTapped(_):
                 break
             case .searchTextDidChange(let txt):
                 state.searchText = txt
-                return .none
             }
             return .none
         }

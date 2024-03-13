@@ -20,11 +20,3 @@ public extension MoviesFlow {
         }
     }
 }
-
-#if debug
-struct MoviesFlowView_Previews: PreviewProvider {
-    static var previews: some View {
-        MoviesFlow.MoviesFlowView(store: .init(initialState: .init(), reducer: .empty, environment: ()))
-    }
-}
-#endif

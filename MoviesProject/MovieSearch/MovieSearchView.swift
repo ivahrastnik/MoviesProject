@@ -15,6 +15,9 @@ public extension MovieSearch {
                         NavigationView {
                             ScrollView {
                                 VStack() {
+                                    Text("Search")
+                                        .foregroundColor(.white)
+                                        .font(.custom("Poppins", size: 20))
                                     HStack(){
                                         TextField("", text: viewStore.binding(get: \.searchText, send: Action.searchTextDidChange))
                                         .padding(EdgeInsets(top: 12, leading: 24, bottom: 12, trailing: 0))
@@ -77,23 +80,7 @@ public extension MovieSearch {
                         }
                 }
             }
-            .navigationBarItems(leading: HStack {
-                Text("                  ")
-                Spacer() // Add a Spacer to push "Detail" to the center
-                Text("Search")
-                    .foregroundColor(.white)
-                    .font(.custom("Poppins", size: 20))
-            }
-            )
             .foregroundColor(.white)
         }
     }
 }
-
-#if debug
-struct MovieSearchView_Previews: PreviewProvider {
-    static var previews: some View {
-        MovieSearch.MovieSearchView(store: .init(initialState: .init(), reducer: .empty, environment: ()))
-    }
-}
-#endif

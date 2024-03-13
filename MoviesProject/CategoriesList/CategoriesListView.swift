@@ -6,7 +6,6 @@ public extension CategoriesList {
         let store: Store<State, Action>
         let columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
 
-        
         public init(store: Store<State, Action>) {
             self.store = store
         }
@@ -16,7 +15,7 @@ public extension CategoriesList {
                 ScrollView(.horizontal) {
                     HStack(spacing: 20){
                         
-                        ForEach(MovieCategories.allCases, id: \.self) { category in
+                        ForEach(MovieCategory.allCases, id: \.self) { category in
                             Button(action: {
                                 viewStore.send(.categoryTapped(category))
                             }) {
@@ -35,10 +34,8 @@ public extension CategoriesList {
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .topLeading)
-                    .frame(height: 41)
+                    .frame(height: 40)
                     .padding(EdgeInsets(top: 0, leading: 16, bottom: 20, trailing: 0))
-                    
-                    
                 }
                 
                 LazyVGrid(columns: columns) {
@@ -56,11 +53,3 @@ public extension CategoriesList {
         }
     }
 }
-
-#if debug
-struct CategoriesListView_Previews: PreviewProvider {
-    static var previews: some View {
-        CategoriesList.CategoriesListView(store: .init(initialState: .init(), reducer: .empty, environment: ()))
-    }
-}
-#endif

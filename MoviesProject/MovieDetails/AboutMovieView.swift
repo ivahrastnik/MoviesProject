@@ -8,28 +8,28 @@
 import SwiftUI
 
 struct AboutMovieView: View {
-    let movie: Movie
-    public init(movie: Movie) {
-        self.movie = movie
+    let year: String
+    let runtime: String
+    let genre: String
+    public init(year: String, runtime: String, genre: String) {
+        self.year = year
+        self.runtime = runtime
+        self.genre = genre
     }
     
     var body: some View {
         HStack(){
             Image(.calendar)
-            Text ("\(movie.year)")
+            Text ("\(year)")
             Text ("|")
             Image(.clock)
-            Text ("\(movie.runtime)")
+            Text ("\(runtime)")
             Text (" | ")
             Image(.ticket)
-            Text ("\(movie.genre)")
+            Text ("\(genre)")
         }
         .font(.custom("Montserrat", fixedSize: 12))
         .padding(EdgeInsets(top: 16, leading: 0, bottom: 24, trailing: 0))
         .foregroundColor(.lightGray)
     }
 }
-
-//#Preview {
-//    AboutMovieView()
-//}

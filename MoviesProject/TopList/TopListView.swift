@@ -33,11 +33,3 @@ public extension TopList {
         }
     }
 }
-
-#if debug
-struct TopListView_Previews: PreviewProvider {
-    static var previews: some View {
-        TopList.TopListView(store: .init(initialState: .init(), reducer: .empty, environment: ()))
-    }
-}
-#endif

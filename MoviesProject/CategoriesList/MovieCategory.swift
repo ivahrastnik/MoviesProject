@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum MovieCategories: CaseIterable, Equatable {
+public enum MovieCategory: CaseIterable, Equatable {
     case nowPlaying
     case upcoming
     case topRated

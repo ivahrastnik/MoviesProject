@@ -6,7 +6,7 @@
 //
 
 import Foundation
-public enum DetailCategoriesButton: CaseIterable, Equatable {
+public enum DetailCategoriesButtonCategory: CaseIterable, Equatable {
     case aboutMovie
     case cast
     

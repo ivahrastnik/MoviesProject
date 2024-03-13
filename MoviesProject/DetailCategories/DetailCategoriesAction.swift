@@ -1,8 +1,8 @@
 import ComposableArchitecture
 
 public extension DetailCategories {
-    indirect enum Action {
+    enum Action {
         case viewAppeared
-        case detailCategoryTapped(DetailCategoriesButton)
+        case detailCategoryTapped(DetailCategoriesButtonCategory)
     }
 }

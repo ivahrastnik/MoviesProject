@@ -31,7 +31,3 @@ struct CategoryMovieCell: View {
         
     }
 }
-
-//#Preview {
-//    CategoryMovieCell()
-//}

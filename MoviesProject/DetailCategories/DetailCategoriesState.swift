@@ -1,14 +1,21 @@
 import ComposableArchitecture
+import SwiftUI
 
 public extension DetailCategories {
     @ObservableState
     struct State: Equatable {
         
-        var selectedDetailCategory: DetailCategoriesButton = .aboutMovie
-        let movie: Movie
+        var selectedDetailCategory: DetailCategoriesButtonCategory = .aboutMovie
+        let plot: String
+        let actorString: String
         
-        public init(movie: Movie) {
-            self.movie = movie
+        var actors: [String] {
+            actorString.components(separatedBy: ", ")
+        }
+        
+        public init(plot: String, actors: String) {
+            self.plot = plot
+            self.actorString = actors
         }
     }
 }

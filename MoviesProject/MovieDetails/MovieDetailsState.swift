@@ -9,7 +9,7 @@ public extension MovieDetails {
         
         public init(movie: Movie) {
             self.movie = movie
-            self.detailCategories = .init(movie: movie)
+            self.detailCategories = .init(plot: movie.plot, actors: movie.actors)
         }
     }
 }
