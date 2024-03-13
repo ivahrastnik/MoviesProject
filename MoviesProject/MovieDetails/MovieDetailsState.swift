@@ -3,12 +3,13 @@ import ComposableArchitecture
 public extension MovieDetails {
     @ObservableState
     struct State: Equatable {
-        var selectedDetailCategory = "About Movie"
-        let detailCategories = ["About Movie", "Cast"]
+        
         let movie: Movie
+        var detailCategories: DetailCategories.State
         
         public init(movie: Movie) {
             self.movie = movie
+            self.detailCategories = .init(plot: movie.plot, actors: movie.actors)
         }
     }
 }

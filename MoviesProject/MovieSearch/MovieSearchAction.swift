@@ -1,8 +1,9 @@
 import ComposableArchitecture
 
 public extension MovieSearch {
-    enum Action: BindableAction {
+    enum Action {
         case viewAppeared
-        case binding(BindingAction<State>)
+        case searchTextDidChange(String)
+        case listItemTapped(Movie)
     }
 }

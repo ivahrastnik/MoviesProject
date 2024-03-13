@@ -4,9 +4,6 @@ import ComposableArchitecture
 public extension MovieSearch {
     struct MovieSearchView: View {
         let store: Store<State, Action>
-//        UBACI U STORE
-//        @State var searchText = ""
-        
         public init(store: Store<State, Action>) {
             self.store = store
         }
@@ -15,18 +12,24 @@ public extension MovieSearch {
             WithViewStore(store, observe: { $0 }) { viewStore in
                 
                 ZStack {
-                        
                         NavigationView {
                             ScrollView {
                                 VStack() {
-                                    //                    TextField("Search", text: $searchText)
+                                    Text("Search")
+                                        .foregroundColor(.white)
+                                        .font(.custom("Poppins", size: 20))
                                     HStack(){
-//                                        TextField("Search", text: store.searchText)
-                                        Button("Search") {
-                                        }
+                                        TextField("", text: viewStore.binding(get: \.searchText, send: Action.searchTextDidChange))
                                         .padding(EdgeInsets(top: 12, leading: 24, bottom: 12, trailing: 0))
                                         .foregroundColor(.lightGray)
                                         .font(.custom("Poppins", fixedSize: 14))
+                                        .overlay(
+                                            Text("Search")
+                                                .foregroundColor(.gray)
+                                                .frame(alignment: .leading)
+                                                .opacity(viewStore.searchText.isEmpty ? 1 : 0)
+                                                .font(.custom("Poppins", fixedSize: 14))
+                                        )
                                         
                                         Image(.searchIcon)
                                             .frame(maxWidth: .infinity, alignment: .trailing)
@@ -38,30 +41,28 @@ public extension MovieSearch {
                                     .cornerRadius(16)
                                     .padding(EdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 16))
                                     
-                                    
-//                                    ForEach(viewStore.movies, id: \.imdbID) { movie in
+                                    ForEach(viewStore.filteredMovies, id: \.imdbID) { movie in
                                         
                                         HStack(){
                                             Button(action: {
-                                                print("HEREEE")
-                                                print(viewStore.movie.title)
-                                                //                                            viewStore.send(.listItemTapped(movie))
+                                                viewStore.send(.listItemTapped(movie))
                                             }) {
-                                                CategoryMovieCell(movie: viewStore.movie)
+                                                CategoryMovieCell(movie: movie)
                                                     .padding(EdgeInsets(top: 28, leading: 24, bottom: 24, trailing: 0))
                                             }
+                                            
                                             VStack(alignment: .leading, spacing: 4) {
                                                 
-                                                Text(viewStore.movie.title)
+                                                Text(movie.title)
                                                     .frame(maxWidth: .infinity, alignment: .topLeading)
                                                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 16))
                                                     .font(.custom("Poppins", fixedSize: 16))
                                                     .foregroundColor(.white)
                                                 
-                                                ForEach([(Image(.star), viewStore.movie.imdbRating),
-                                                         (Image(.ticket), viewStore.movie.genre),
-                                                         (Image(.calendar), viewStore.movie.year),
-                                                         (Image(.clock), viewStore.movie.runtime)], id: \.1) { pair in
+                                                ForEach([(Image(.star), movie.imdbRating),
+                                                         (Image(.ticket), movie.genre),
+                                                         (Image(.calendar), movie.year),
+                                                         (Image(.clock), movie.runtime)], id: \.1) { pair in
                                                     HStack() {
                                                         pair.0
                                                             .resizable()
@@ -71,32 +72,15 @@ public extension MovieSearch {
                                                 }
                                             }
                                         }
-//                                    }
-                                    
+                                    }
                                 }
                             }
                             .frame(maxWidth: .infinity, alignment: .top)
                             .background(.darkBackground)
-                            .navigationBarItems(leading:
-                                                    Text("Search")
-                                .foregroundColor(.white)
-                                .font(.custom("Poppins", size: 20))
-                            )
                         }
-                        
-                    }
                 }
-                .foregroundStyle(.white)
-//
             }
+            .foregroundColor(.white)
         }
     }
-//}
-
-#if debug
-struct MovieSearchView_Previews: PreviewProvider {
-    static var previews: some View {
-        MovieSearch.MovieSearchView(store: .init(initialState: .init(), reducer: .empty, environment: ()))
-    }
 }
-#endif

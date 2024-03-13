@@ -1,14 +1,15 @@
 import ComposableArchitecture
 
 public extension Home {
-    enum Action {
+    @CasePathable
+    enum Action  {
         case viewAppeared
         case topList(TopList.Action)
         case categoriesList(CategoriesList.Action)
         case moviesFetched([Movie]?)
         case movieDetails(MovieDetails.Action)
         case movieSearch(MovieSearch.Action)
-        case searchBarTapped(Movie)
-//        case path(StackAction<MovieDetails.State, MovieDetails.Action>)
+        case searchBarTapped([Movie])
+        case searchTextDidChange(String)
     }
 }

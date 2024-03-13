@@ -10,7 +10,7 @@ public extension Application {
         }
 
         public var body: some View {
-            MoviesFlow.MoviesFlowView(store: store.scope(state: \.moviesFlow, action: Action.moviesFlow))
+            MoviesFlow.MoviesFlowView(store: store.scope(state: \.moviesFlow, action: \.moviesFlow))
                 .background(.darkBackground)
         }
     }

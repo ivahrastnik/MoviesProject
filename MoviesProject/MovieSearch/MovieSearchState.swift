@@ -3,12 +3,16 @@ import ComposableArchitecture
 public extension MovieSearch {
     @ObservableState
     struct State: Equatable {
-//        let detailCategories = ["About Movie", "Cast"]
-        let searchText: String
-        let movie: Movie
-//
-        public init(movie: Movie) {
-            self.movie = movie
+        var movies: [Movie]
+        var searchText: String
+        
+        var filteredMovies: [Movie] {
+            guard !searchText.isEmpty else { return movies }
+            return movies.filter { $0.title.localizedCaseInsensitiveContains(searchText) }
+        }
+        
+        public init(movies: [Movie]) {
+            self.movies = movies
             self.searchText = ""
         }
     }

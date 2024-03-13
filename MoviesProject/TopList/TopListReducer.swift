@@ -10,17 +10,10 @@ public struct TopList: Reducer {
             switch action {
             case .viewAppeared, .binding:
                 break
-            case .listItemTapped(let item):
-//                print(item)
+            case .listItemTapped(_):
                 break
-                //            case .path(_):
-                //                return .none
             }
             return .none
         }
-        
-//        .forEach(\.path, action: /Action.path) {
-//              MovieDetails()
-//            }
     }
 }
