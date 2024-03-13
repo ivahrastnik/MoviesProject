@@ -15,11 +15,12 @@ public extension CategoriesList {
             WithViewStore(store, observe: { $0 }) { viewStore in
                 ScrollView(.horizontal) {
                     HStack(spacing: 20){
-                        ForEach(viewStore.categories, id: \.self) { category in
+                        
+                        ForEach(MovieCategories.allCases, id: \.self) { category in
                             Button(action: {
                                 viewStore.send(.categoryTapped(category))
                             }) {
-                                Text(category)
+                                Text(category.stringValue)
                                     .font(.custom("Poppins", size: 14))
                                     .frame(height: 33)
                                     .foregroundColor(.white)
@@ -42,52 +43,7 @@ public extension CategoriesList {
                 
                 LazyVGrid(columns: columns) {
                     
-//                    VStack {
-//                        switch viewStore.selectedCategory {
-//                        case .nowPlaying:
-//                            ForEach(viewStore.movies.filter { $0.category == .nowPlaying }, id: \.imdbID) { movie in
-//                                Button(action: {
-//                                    viewStore.send(.listItemTapped(movie))
-//                                }) {
-//                                    CategoryMovieCell(movie: movie)
-//                                }
-//                            }
-//                        case .upcoming:
-//                            ForEach(viewStore.movies.filter { $0.category == .upcoming }, id: \.imdbID) { movie in
-//                                Button(action: {
-//                                    viewStore.send(.listItemTapped(movie))
-//                                }) {
-//                                    CategoryMovieCell(movie: movie)
-//                                }
-//                            }
-//                        case .topRated:
-//                            ForEach(viewStore.sortedMovies, id: \.imdbID) { movie in
-//                                Button(action: {
-//                                    viewStore.send(.listItemTapped(movie))
-//                                }) {
-//                                    CategoryMovieCell(movie: movie)
-//                                }
-//                            }
-//                        case .popular:
-//                            ForEach(viewStore.movies.filter { $0.category == .popular }, id: \.imdbID) { movie in
-//                                Button(action: {
-//                                    viewStore.send(.listItemTapped(movie))
-//                                }) {
-//                                    CategoryMovieCell(movie: movie)
-//                                }
-//                            }
-//                        case .another:
-//                            ForEach(viewStore.movies.filter { $0.category == .another }, id: \.imdbID) { movie in
-//                                Button(action: {
-//                                    viewStore.send(.listItemTapped(movie))
-//                                }) {
-//                                    CategoryMovieCell(movie: movie)
-//                                }
-//                            }
-//                        }
-//                    }
-                    
-                    ForEach((viewStore.selectedCategory == "Top rated" ? viewStore.sortedMovies : viewStore.movies), id: \.imdbID) { movie in
+                    ForEach((viewStore.selectedCategory == .topRated ? viewStore.sortedMovies : viewStore.movies), id: \.imdbID) { movie in
                         Button(action: {
                             viewStore.send(.listItemTapped(movie))
                         }) {

@@ -6,3 +6,26 @@
 //
 
 import Foundation
+
+public enum MovieCategories: CaseIterable, Equatable {
+    case nowPlaying
+    case upcoming
+    case topRated
+    case popular
+    case another
+    
+    var stringValue: String {
+        switch self {
+        case .nowPlaying:
+            return "Now playing"
+        case .upcoming:
+            return "Upcoming"
+        case .topRated:
+            return "Top rated"
+        case .popular:
+            return "Popular"
+        case .another:
+            return "Another"
+        }
+    }
+}

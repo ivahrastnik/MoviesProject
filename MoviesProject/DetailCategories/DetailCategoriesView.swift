@@ -13,12 +13,12 @@ public extension DetailCategories {
             WithViewStore(store, observe: { $0 }) { viewStore in
                 ScrollView(.horizontal) {
                     HStack(spacing: 20){
-                        ForEach(viewStore.detailCategories, id: \.self) { category in
+                        ForEach(DetailCategoriesButton.allCases, id: \.self) { category in
                             Button(action: {
                                 print("Button tapped: \(category)")
                                 viewStore.send(.detailCategoryTapped(category))
                             }) {
-                                Text(category)
+                                Text(category.stringValue)
                                     .font(.custom("Poppins", size: 14))
                                     .frame(height: 33)
                                     .padding(.bottom, 4)
@@ -38,7 +38,7 @@ public extension DetailCategories {
                     .padding(EdgeInsets(top: 0, leading: 16, bottom: 24, trailing: 0))
                 }
                 
-                if viewStore.selectedDetailCategory == "About Movie" {
+                if viewStore.selectedDetailCategory == .aboutMovie {
                     Text(viewStore.movie.plot)
                         .foregroundColor(.white)
                         .font(.custom("Poppins", size: 12))
